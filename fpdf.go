@@ -3190,6 +3190,7 @@ func (f *Fpdf) RegisterImageOptionsReader(imgName string, options ImageOptions, 
 		f.err = fmt.Errorf("unsupported image type: %s", options.ImageType)
 	}
 	if f.err != nil {
+		f.err = fmt.Errorf("error parsing image %s: %s", imgName, f.err)
 		return
 	}
 
