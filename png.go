@@ -42,13 +42,13 @@ func (f *Fpdf) parsepngstream(buf *bytes.Buffer, readdpi bool) (info *ImageInfoT
 	info = f.newImageInfo()
 	// 	Check signature
 	if string(buf.Next(8)) != "\x89PNG\x0d\x0a\x1a\x0a" {
-		f.err = fmt.Errorf("not a PNG buffer")
+		f.err = fmt.Errorf("not a PNG buffer %s", f.ImgNameRecord)
 		return
 	}
 	// Read header chunk
 	_ = buf.Next(4)
 	if string(buf.Next(4)) != "IHDR" {
-		f.err = fmt.Errorf("incorrect PNG buffer")
+		f.err = fmt.Errorf("incorrect PNG buffer %s ", f.ImgNameRecord)
 		return
 	}
 	w := f.readBeInt32(buf)
