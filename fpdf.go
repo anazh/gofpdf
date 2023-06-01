@@ -3172,7 +3172,7 @@ func (f *Fpdf) RegisterImageOptionsReader(imgName string, options ImageOptions, 
 	f.ImgNameRecord = imgName
 	// First use of this image, get info
 	if options.ImageType == "" {
-		f.err = fmt.Errorf("image type should be specified if reading from custom reader")
+		f.err = fmt.Errorf("image type should be specified if reading from custom reader，imgIs:" + imgName)
 		return
 	}
 	options.ImageType = strings.ToLower(options.ImageType)
